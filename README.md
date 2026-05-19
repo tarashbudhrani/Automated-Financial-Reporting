@@ -1,24 +1,77 @@
-Automated Financial Reporting Pipeline
+# 📊 FinSight — World Investment Intelligence System
 
-Built an automated data pipeline to consolidate daily financial reports from distributed field teams into a single, standardized dataset for reporting and analysis.
+> 196 countries. One investor. Zero clarity — until now.
 
-Problem
-Field teams submitted reports in Excel/Google Sheets with inconsistent formats and timing, leading to manual consolidation, duplicate entries, formatting issues, and delayed visibility into daily performance.
-Solution
-Designed a scheduled batch data pipeline to automate ingestion, transformation, and reporting:
-Orchestrates data flow from Google Drive using Drive API and Power Automate
-Standardizes and validates incoming Excel/Google Sheets data
-Stores intermediate data in Amazon S3 for scalable processing
-Appends cleaned data into a centralized reporting dataset
-Archives processed files and removes temporary artifacts
+Automated the full pipeline from raw IMF data to a ranked investment dashboard — surfacing the safest, highest-potential markets globally.
 
-Impact
-Eliminated 3–4 hours of manual consolidation per cycle by orchestrating a scheduled batch data pipeline (Power Automate → Google Drive → Drive API → Power BI) that ingests, validates, and refreshes reports daily at 3 PM without human intervention
-Improved decision turnaround time by 80% by building Power BI dashboards enabling self-service tracking of collections vs expected revenue, pending payments, and reconciliation gaps in near real-time
+---
 
-Tech Stack
-Google Apps Script (JavaScript)
-Google Drive API / DriveApp
-Google Sheets (SpreadsheetApp)
-Power BI (DAX, Power Query)
-Amazon S3
+## 🖥️ Dashboard Preview
+
+<img width="881" height="629" alt="image" src="https://github.com/user-attachments/assets/a90732ac-5a79-412f-949e-b129466e06dd" />
+
+
+---
+
+## 🎯 The Problem
+
+Raw IMF data existed across 196 countries — scattered, unorganized, and impossible to compare. The client needed one system that could automatically consolidate everything and highlight **where to invest and where to avoid**.
+
+---
+
+## ✅ What Was Built
+
+| | |
+|---|---|
+| ⚙️ **Auto-ingestion** | Google Apps Script pulls `.xlsx` files from Drive, consolidates into one master sheet, and archives originals |
+| 📊 **Analytics dashboard** | Excel dashboard with KPIs, charts, and a world map — built on top of the consolidated data |
+| 🌍 **Sweet Spot scoring** | Composite score ranking every country by inflation, growth, unemployment, and fiscal health |
+| 🚨 **Risk flagging** | Misery Index and Net Lending charts surface dangerous economies automatically |
+
+---
+
+## 📈 Dashboard Highlights
+
+| Visual | What it answers |
+|---|---|
+| **Sweet Spot World Map** | Which regions are safest to invest in — geographically |
+| **Misery Index** | Is the global economy improving or getting worse? |
+| **Top 10 Growing Countries** | Where is real GDP growth happening right now? |
+| **Worst Net Lending** | Which countries are fiscally dangerous — the avoid list |
+| **GDP PPP Donut** | Which economies actually control global output? |
+
+---
+
+## ⚙️ How the Automation Works
+
+```
+Drop .xlsx into Drive folder
+          │
+          ▼
+  Script auto-converts + reads
+          │
+          ▼
+  Appends to Master Sheet
+  (no duplicate headers)
+          │
+          ▼
+  Original file → archived
+  Dashboard → updates
+```
+
+---
+
+## 🔑 Key Results
+
+- **194 countries** evaluated across 7+ IMF economic indicators
+- **9.15%** global average inflation tracked across 2019–2025
+- **Guyana** flagged as the top outlier — 57% GDP growth
+- **Ukraine** identified as highest fiscal risk — net lending at -423.77
+
+---
+
+## 🛠️ Stack
+
+`Excel` · `Google Sheets` · `Google Apps Script` · `IMF Open Data`
+
+**Data source:** [IMF Datasets](https://data.imf.org/en/Datasets)
